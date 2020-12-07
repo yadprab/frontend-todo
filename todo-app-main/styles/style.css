@@ -1,0 +1,292 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+:root {
+  --alpha: 1;
+  --alpha-2: 0.8;
+  --alpha-3: 0.6;
+  --alpha-4: 0.4;
+  --alpha-5: 0.2;
+  --fontFw: 200;
+  --fontFw-1: 300;
+  --fontFw-2: 400;
+  --fontFw-3: 500;
+  --fontFw-4: 700;
+  --fontFw-5: 900;
+  --max-width-mob-1: 380px;
+  --max-width-mob: 480px;
+  --max-width-tab: 650px;
+  --max-width-desktop: 900px;
+  --max-width-desktop: 1440px;
+  --major-white: #ffffff;
+  --major-black: #000000;
+  --button-pad-1: 1em 2em;
+  --button-pad-2: 0.5em 1em;
+  --button-pad-3: 0.5em 2em;
+}
+
+:root {
+  --font: 'Josefin Sans',
+    sans-serif;
+  --BrightBlue: hsl(220, 98%, 61%);
+}
+
+.light {
+  --VeryLightGray: hsl(0, 0%, 98%);
+  --VeryLightGrayishBlue: hsl(236, 33%, 92%);
+  --LightGrayishBlue: hsl(233, 11%, 84%);
+  --DarkGrayishBlue: hsl(236, 9%, 61%);
+  --VeryDarkGrayishBlue: hsl(235, 19%, 35%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+*::after,
+*::before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+body {
+  background-color: var(--VeryLightGray);
+  height: 100vh;
+  font-family: var(--font);
+  line-height: 1.5;
+}
+
+header {
+  background-image: url(../images/bg-mobile-light.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 200px;
+  max-width: 480px;
+  padding: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+header .logo--section {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2em;
+}
+
+header .logo--section h1 {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--VeryLightGray);
+}
+
+header .logo--section button {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: none;
+  background-color: unset;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+header .logo--section button svg {
+  pointer-events: none;
+}
+
+header .input--section {
+  width: 100%;
+  height: 40px;
+}
+
+header .input--section form {
+  width: 100%;
+  height: 100%;
+}
+
+header .input--section form .todo--input {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+header .input--section form .todo--input input {
+  width: 100%;
+  height: 100%;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: none;
+  padding: 1em 3em;
+  border-radius: 3px;
+}
+
+header .input--section form .todo--input ::-webkit-input-placeholder {
+  font-family: var(--font);
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--VeryDarkGrayishBlue);
+}
+
+header .input--section form .todo--input :-ms-input-placeholder {
+  font-family: var(--font);
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--VeryDarkGrayishBlue);
+}
+
+header .input--section form .todo--input ::-ms-input-placeholder {
+  font-family: var(--font);
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--VeryDarkGrayishBlue);
+}
+
+header .input--section form .todo--input ::placeholder {
+  font-family: var(--font);
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--VeryDarkGrayishBlue);
+}
+
+header .input--section form .todo--input .overlay {
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border-radius: 50%;
+  border: 1px solid var(--LightGrayishBlue);
+  position: absolute;
+  top: 9px;
+  left: 8px;
+}
+
+.container {
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (300px)[1];
+      grid-template-columns: repeat(1, 300px);
+  place-content: center;
+  gap: 1rem;
+  position: relative;
+  -ms-grid-row-align: center;
+      align-self: center;
+  top: 20px;
+  border-radius: 5px;
+}
+
+.container ul {
+  background-color: var(--VeryLightGray);
+  border-radius: 5px;
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-shadow: 0 5px 10px -5px rgba(0, 0, 0, var(--alpha-4));
+          box-shadow: 0 5px 10px -5px rgba(0, 0, 0, var(--alpha-4));
+}
+
+.container ul li {
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  width: 100%;
+  border: 1px solid var(--LightGrayishBlue);
+  padding: 1em;
+}
+
+.container ul li .tasks--section {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 50px 1fr auto;
+      grid-template-columns: 50px 1fr auto;
+}
+
+.filter--section {
+  background-color: var(--VeryLightGray);
+  padding: 1em;
+  margin-bottom: 1em;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: 0 5px 10px -5px rgba(0, 0, 0, var(--alpha-4));
+          box-shadow: 0 5px 10px -5px rgba(0, 0, 0, var(--alpha-4));
+}
+
+.filter--section button {
+  margin: 0 1em;
+  padding: 0.3em;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: none;
+  background-color: unset;
+  text-transform: capitalize;
+  font-weight: 700;
+  font-family: var(--font);
+  color: var(--LightGrayishBlue);
+  cursor: pointer;
+}
+
+.dark {
+  --VeryDarkBlue: hsl(235, 21%, 11%);
+  --VeryDarkDesaturatedBlue: hsl(235, 24%, 19%);
+  --LightGrayishBlue: hsl(234, 39%, 85%);
+  --LightGrayishBluehover: hsl(236, 33%, 92%);
+  --DarkGrayishBlue: hsl(234, 11%, 52%);
+  --VeryDarkGrayishBlue: hsl(233, 14%, 35%);
+  --VeryDarkGrayishBlue: hsl(237, 14%, 26%);
+}
+/*# sourceMappingURL=style.css.map */
