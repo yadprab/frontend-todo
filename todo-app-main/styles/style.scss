@@ -164,6 +164,10 @@ header{
             .tasks--section{
                 display: grid;
                   grid-template-columns: 50px 1fr auto;
+                  
+                  p{
+                    font-size: .8rem;
+                  }
             }
         }
     }
@@ -193,6 +197,67 @@ header{
     }
 }
 
+#remove--button{
+  @include svg-button;
+  background-color: unset;
+  cursor: pointer;
+  place-self: center;
+  
+  svg{
+    pointer-events: none;
+  }
+}
+ .check--box{
+    position: relative;
+  
+   
+  }
+  
+  .checkbox--overlay{
+    width: 25px;
+    height: 25px;
+   background-color:transparent;
+   border-radius: 50%;
+  border: 1px solid var(--LightGrayishBlue);
+  position: absolute;
+    top:0px;
+    left:-5px;
+    background-color: var(--VeryLightGray);
+  }
+.end--section{
+  @include flex-1;
+  justify-content: space-between;
+    color: var(--LightGrayishBlue);
+  small{
+    font-size: 0.8rem;
+  }
+  #clear{
+    @include svg-button;
+    background-color: unset;
+    font-size: 0.8rem;
+    font-weight: 500;
+    font-family: var(--font);
+      color: var(--LightGrayishBlue);
+      cursor: pointer;
+    
+  }
+  .filter--section{
+    padding: 0em;
+    box-shadow: unset;
+    margin: 0;
+    display: none;
+    button{
+      margin: 0 0.2em;
+    }
+  }
+}  
+.checked{
+  opacity: 0.5;
+  text-decoration:line-through ;
+  
+  
+}
+  
 
 
 

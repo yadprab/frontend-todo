@@ -24,8 +24,8 @@
 }
 
 :root {
-  --font: 'Josefin Sans',
-    sans-serif;
+  --font: "Josefin Sans",
+  sans-serif;
   --BrightBlue: hsl(220, 98%, 61%);
 }
 
@@ -40,14 +40,12 @@
 * {
   margin: 0;
   padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 *::after,
 *::before {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
@@ -74,117 +72,63 @@ header {
   height: 200px;
   max-width: 480px;
   padding: 1em;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
 }
-
 header .logo--section {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 2em;
 }
-
 header .logo--section h1 {
   text-transform: uppercase;
   letter-spacing: 2px;
   color: var(--VeryLightGray);
 }
-
 header .logo--section button {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  appearance: none;
   border: none;
   background-color: unset;
   cursor: pointer;
   margin-right: 5px;
 }
-
 header .logo--section button svg {
   pointer-events: none;
 }
-
 header .input--section {
   width: 100%;
   height: 40px;
 }
-
 header .input--section form {
   width: 100%;
   height: 100%;
 }
-
 header .input--section form .todo--input {
   width: 100%;
   height: 100%;
   position: relative;
 }
-
 header .input--section form .todo--input input {
   width: 100%;
   height: 100%;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  appearance: none;
   border: none;
   padding: 1em 3em;
   border-radius: 3px;
 }
-
-header .input--section form .todo--input ::-webkit-input-placeholder {
-  font-family: var(--font);
-  font-weight: 700;
-  letter-spacing: 1px;
-  color: var(--VeryDarkGrayishBlue);
-}
-
-header .input--section form .todo--input :-ms-input-placeholder {
-  font-family: var(--font);
-  font-weight: 700;
-  letter-spacing: 1px;
-  color: var(--VeryDarkGrayishBlue);
-}
-
-header .input--section form .todo--input ::-ms-input-placeholder {
-  font-family: var(--font);
-  font-weight: 700;
-  letter-spacing: 1px;
-  color: var(--VeryDarkGrayishBlue);
-}
-
 header .input--section form .todo--input ::placeholder {
   font-family: var(--font);
   font-weight: 700;
   letter-spacing: 1px;
   color: var(--VeryDarkGrayishBlue);
 }
-
 header .input--section form .todo--input .overlay {
   width: 20px;
   height: 20px;
@@ -198,40 +142,25 @@ header .input--section form .todo--input .overlay {
 
 .container {
   width: 100%;
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (300px)[1];
-      grid-template-columns: repeat(1, 300px);
+  grid-template-columns: repeat(1, 300px);
   place-content: center;
   gap: 1rem;
   position: relative;
-  -ms-grid-row-align: center;
-      align-self: center;
+  align-self: center;
   top: 20px;
   border-radius: 5px;
 }
-
 .container ul {
   background-color: var(--VeryLightGray);
   border-radius: 5px;
   list-style: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-shadow: 0 5px 10px -5px rgba(0, 0, 0, var(--alpha-4));
-          box-shadow: 0 5px 10px -5px rgba(0, 0, 0, var(--alpha-4));
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 5px 10px -5px rgba(0, 0, 0, var(--alpha-4));
 }
-
 .container ul li {
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
@@ -239,12 +168,12 @@ header .input--section form .todo--input .overlay {
   border: 1px solid var(--LightGrayishBlue);
   padding: 1em;
 }
-
 .container ul li .tasks--section {
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 50px 1fr auto;
-      grid-template-columns: 50px 1fr auto;
+  grid-template-columns: 50px 1fr auto;
+}
+.container ul li .tasks--section p {
+  font-size: 0.8rem;
 }
 
 .filter--section {
@@ -252,25 +181,15 @@ header .input--section form .todo--input .overlay {
   padding: 1em;
   margin-bottom: 1em;
   border-radius: 5px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-shadow: 0 5px 10px -5px rgba(0, 0, 0, var(--alpha-4));
-          box-shadow: 0 5px 10px -5px rgba(0, 0, 0, var(--alpha-4));
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 5px 10px -5px rgba(0, 0, 0, var(--alpha-4));
 }
-
 .filter--section button {
   margin: 0 1em;
   padding: 0.3em;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  appearance: none;
   border: none;
   background-color: unset;
   text-transform: capitalize;
@@ -278,6 +197,68 @@ header .input--section form .todo--input .overlay {
   font-family: var(--font);
   color: var(--LightGrayishBlue);
   cursor: pointer;
+}
+
+#remove--button {
+  appearance: none;
+  border: none;
+  background-color: unset;
+  cursor: pointer;
+  place-self: center;
+}
+#remove--button svg {
+  pointer-events: none;
+}
+
+.check--box {
+  position: relative;
+}
+
+.checkbox--overlay {
+  width: 25px;
+  height: 25px;
+  background-color: transparent;
+  border-radius: 50%;
+  border: 1px solid var(--LightGrayishBlue);
+  position: absolute;
+  top: 0px;
+  left: -5px;
+  background-color: var(--VeryLightGray);
+}
+
+.end--section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--LightGrayishBlue);
+}
+.end--section small {
+  font-size: 0.8rem;
+}
+.end--section #clear {
+  appearance: none;
+  border: none;
+  background-color: unset;
+  font-size: 0.8rem;
+  font-weight: 500;
+  font-family: var(--font);
+  color: var(--LightGrayishBlue);
+  cursor: pointer;
+}
+.end--section .filter--section {
+  padding: 0em;
+  box-shadow: unset;
+  margin: 0;
+  display: none;
+}
+.end--section .filter--section button {
+  margin: 0 0.2em;
+}
+
+.checked {
+  opacity: 0.5;
+  text-decoration: line-through;
 }
 
 .dark {
@@ -289,4 +270,5 @@ header .input--section form .todo--input .overlay {
   --VeryDarkGrayishBlue: hsl(233, 14%, 35%);
   --VeryDarkGrayishBlue: hsl(237, 14%, 26%);
 }
+
 /*# sourceMappingURL=style.css.map */
