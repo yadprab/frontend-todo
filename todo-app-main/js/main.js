@@ -67,7 +67,7 @@ const todoFn = () => {
 
   setTheme(header, themeSwitcher);
 
-  // generateTodo();
+  generateTodo();
 
   //click function for theme switcher
   themeSwitcher.addEventListener("click", getTheme);
@@ -103,6 +103,7 @@ const formFn = () => {
 
     form.reset();
 
+      generateTodo();
  
   };
 
@@ -122,7 +123,6 @@ const setTodo = (val) => {
 
     localStorage.setItem("todo", JSON.stringify(updateTodo));
 
-    // generateTodo();
   }
 };
 
