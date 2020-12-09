@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
 @import './uti';
+
 :root {
     --font: 'Josefin Sans', sans-serif;
     --BrightBlue: hsl(220, 98%, 61%);
@@ -52,37 +53,45 @@ header {
     padding: 1em;
     @include flex-2;
     justify-content: flex-start;
+
     .logo--section {
         width: 100%;
         @include flex-1;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 2em;
+
         h1 {
             text-transform: uppercase;
             letter-spacing: 2px;
-            color:hsl(0, 0%, 98%);
+            color: hsl(0, 0%, 98%);
         }
+
         button {
             @include svg-button;
             background-color: unset;
             cursor: pointer;
             margin-right: 5px;
+
             svg {
                 pointer-events: none;
             }
         }
     }
+
     .input--section {
         width: 100%;
         height: 40px;
+
         form {
             width: 100%;
             height: 100%;
+
             .todo--input {
                 width: 100%;
                 height: 100%;
                 position: relative;
+
                 input {
                     width: 100%;
                     height: 100%;
@@ -93,12 +102,14 @@ header {
                     background-color: var(--VeryDarkDesaturatedBlue);
                     color: var(--DarkGrayishBlue);
                 }
-                 ::placeholder {
+
+                ::placeholder {
                     font-family: var(--font);
                     font-weight: 700;
                     letter-spacing: 1px;
                     color: var(--VeryDarkGrayishBlue);
                 }
+
                 .overlay {
                     width: 20px;
                     height: 20px;
@@ -124,12 +135,14 @@ header {
     align-self: center;
     top: 20px;
     border-radius: 5px;
+
     ul {
         background-color: var(--VeryDarkDesaturatedBlue);
         border-radius: 5px;
         list-style: none;
         @include flex-2;
         @include box-shadow-4;
+
         li {
             border-top-right-radius: 5px;
             border-top-left-radius: 5px;
@@ -137,12 +150,14 @@ header {
             border-bottom: 1px solid var(--VeryLightGrayishBlue);
             padding: 1em;
 
-            &:nth-last-child(1){
+            &:nth-last-child(1) {
                 border: unset;
             }
+
             .tasks--section {
                 display: grid;
                 grid-template-columns: 50px 1fr auto;
+
                 p {
                     font-size: .8rem;
                     color: var(--VeryDarkGrayishBlue);
@@ -153,12 +168,13 @@ header {
 }
 
 .filter--section {
-     background-color: var(--VeryDarkDesaturatedBlue);
+    background-color: var(--VeryDarkDesaturatedBlue);
     padding: 1em;
     margin-bottom: 1em;
     border-radius: 5px;
     @include flex-1;
     @include box-shadow-4;
+
     button {
         margin: 0 1em;
         padding: 0.3em;
@@ -177,6 +193,7 @@ header {
     background-color: unset;
     cursor: pointer;
     place-self: center;
+
     svg {
         pointer-events: none;
     }
@@ -185,23 +202,23 @@ header {
 #checkbox {
     position: relative;
 
-    &::before{
-          width: 25px;
-          height: 25px;
-         content: '';
-          border-radius: 50%;
-          border: 1px solid var(--VeryLightGrayishBlue);
-          position: absolute;
-          top: 0px;
-          left: -5px;
-          background-color: var(--VeryDarkDesaturatedBlue);
-          cursor: pointer;
+    &::before {
+        width: 25px;
+        height: 25px;
+        content: '';
+        border-radius: 50%;
+        border: 1px solid var(--VeryLightGrayishBlue);
+        position: absolute;
+        top: 0px;
+        left: -5px;
+        background-color: var(--VeryDarkDesaturatedBlue);
+        cursor: pointer;
 
     }
-   
+
 }
 
-#check{
+#check {
     opacity: 0;
 }
 
@@ -210,9 +227,11 @@ header {
     @include flex-1;
     justify-content: space-between;
     color: var(--LightGrayishBlue);
+
     small {
         font-size: 0.8rem;
     }
+
     #clear {
         @include svg-button;
         background-color: unset;
@@ -222,11 +241,13 @@ header {
         color: var(--LightGrayishBlue);
         cursor: pointer;
     }
+
     .filter--section {
         padding: 0em;
         box-shadow: unset;
         margin: 0;
         display: none;
+
         button {
             margin: 0 0.2em;
         }
@@ -238,11 +259,11 @@ header {
     text-decoration: line-through;
 }
 
-.dark--header{
+.dark--header {
     background-image: url(../images/bg-mobile-dark.jpg);
 }
 
-.show{
+.show {
     display: none;
 }
 
