@@ -1,24 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
 @import './uti';
-
-:root{
-    --font: 'Josefin Sans',
-    sans-serif;
+:root {
+    --font: 'Josefin Sans', sans-serif;
     --BrightBlue: hsl(220, 98%, 61%);
-    
-
-    
 }
 
-.light{
+.light {
+    --VeryDarkBlue: hsl(0, 0%, 98%);
     --VeryLightGray: hsl(0, 0%, 98%);
-    --VeryLightGrayishBlue: hsl(236, 33%, 92%);
+    --VeryDarkDesaturatedBlue: hsl(0, 0%, 98%);
+    --VeryLightGrayishBlue: hsl(240, 6%, 94%);
     --LightGrayishBlue: hsl(233, 11%, 84%);
     --DarkGrayishBlue: hsl(236, 9%, 61%);
     --VeryDarkGrayishBlue: hsl(235, 19%, 35%);
-
 }
-
 
 * {
     margin: 0;
@@ -28,7 +23,6 @@
 
 *::after,
 *::before {
-
     box-sizing: border-box;
 }
 
@@ -41,13 +35,14 @@ img {
     display: block;
 }
 
-body{
-    background-color: var(--VeryLightGray);
+body {
+    background-color: var(--VeryDarkBlue);
     height: 100vh;
     font-family: var(--font);
     line-height: 1.5;
 }
-header{
+
+header {
     background-image: url(../images/bg-mobile-light.jpg);
     background-repeat: no-repeat;
     background-position: center;
@@ -57,136 +52,116 @@ header{
     padding: 1em;
     @include flex-2;
     justify-content: flex-start;
-
-
-    .logo--section{
-
+    .logo--section {
         width: 100%;
-     
         @include flex-1;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 2em;
-
-
-        h1{
+        h1 {
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: var(--VeryLightGray);
+            color:hsl(0, 0%, 98%);
         }
-
-        button{
+        button {
             @include svg-button;
             background-color: unset;
             cursor: pointer;
             margin-right: 5px;
-          
-           
-            svg{
+            svg {
                 pointer-events: none;
-           
-              
             }
         }
     }
-    .input--section{
+    .input--section {
         width: 100%;
-    
         height: 40px;
-
-        form{
+        form {
             width: 100%;
             height: 100%;
-          
-
-            .todo--input{
-                 width: 100%;
-                 height: 100%;
-                 position: relative;
-
-                 input{
-                      width: 100%;
-                      height: 100%;
-                      appearance: none;
-                      border: none;
-                      padding: 1em 3em;
-                      border-radius: 3px;
-                 }
-                 ::placeholder{
-                 font-family: var(--font);
-                   font-weight: 700;
-                   letter-spacing: 1px;
-                   color: var(--VeryDarkGrayishBlue);
-                 }
-                 .overlay{
-                     width: 20px;
-                     height: 20px;
-                     background-color:transparent;
-                     border-radius: 50%;
-                     border: 1px solid var(--LightGrayishBlue);
-                     position: absolute;
-                     top: 9px;
-                     left: 8px;
-                 }
-
+            .todo--input {
+                width: 100%;
+                height: 100%;
+                position: relative;
+                input {
+                    width: 100%;
+                    height: 100%;
+                    appearance: none;
+                    border: none;
+                    padding: 1em 3em;
+                    border-radius: 3px;
+                    background-color: var(--VeryDarkDesaturatedBlue);
+                    color: var(--DarkGrayishBlue);
+                }
+                 ::placeholder {
+                    font-family: var(--font);
+                    font-weight: 700;
+                    letter-spacing: 1px;
+                    color: var(--VeryDarkGrayishBlue);
+                }
+                .overlay {
+                    width: 20px;
+                    height: 20px;
+                    background-color: transparent;
+                    border-radius: 50%;
+                    border: 1px solid var(--VeryLightGrayishBlue);
+                    position: absolute;
+                    top: 9px;
+                    left: 8px;
+                }
             }
         }
     }
 }
 
-.container{
-   
+.container {
     width: 100%;
-    
     display: grid;
     grid-template-columns: repeat(1, 300px);
     place-content: center;
     gap: 1rem;
     position: relative;
-    align-self:center;
+    align-self: center;
     top: 20px;
-         border-radius: 5px;
-
-
-    ul{
-        background-color: var(--VeryLightGray);
+    border-radius: 5px;
+    ul {
+        background-color: var(--VeryDarkDesaturatedBlue);
         border-radius: 5px;
         list-style: none;
         @include flex-2;
         @include box-shadow-4;
-
-        li{
-        border-top-right-radius: 5px;
-           border-top-left-radius: 5px;
+        li {
+            border-top-right-radius: 5px;
+            border-top-left-radius: 5px;
             width: 100%;
-             border: 1px solid var(--LightGrayishBlue);
-           padding: 1em;
-            .tasks--section{
+            border-bottom: 1px solid var(--VeryLightGrayishBlue);
+            padding: 1em;
+
+            &:nth-last-child(1){
+                border: unset;
+            }
+            .tasks--section {
                 display: grid;
-                  grid-template-columns: 50px 1fr auto;
-                  
-                  p{
+                grid-template-columns: 50px 1fr auto;
+                p {
                     font-size: .8rem;
-                  }
+                    color: var(--VeryDarkGrayishBlue);
+                }
             }
         }
     }
-  
-
-    
 }
 
-.filter--section{
-    background-color: var(--VeryLightGray);
+.filter--section {
+     background-color: var(--VeryDarkDesaturatedBlue);
     padding: 1em;
     margin-bottom: 1em;
     border-radius: 5px;
     @include flex-1;
     @include box-shadow-4;
-
-    button{
+    button {
         margin: 0 1em;
-        padding:0.3em;
+        padding: 0.3em;
         @include svg-button;
         background-color: unset;
         text-transform: capitalize;
@@ -197,80 +172,86 @@ header{
     }
 }
 
-#remove--button{
-  @include svg-button;
-  background-color: unset;
-  cursor: pointer;
-  place-self: center;
-  
-  svg{
-    pointer-events: none;
-  }
-}
- .check--box{
-    position: relative;
-  
-   
-  }
-  
-  .checkbox--overlay{
-    width: 25px;
-    height: 25px;
-   background-color:transparent;
-   border-radius: 50%;
-  border: 1px solid var(--LightGrayishBlue);
-  position: absolute;
-    top:0px;
-    left:-5px;
-    background-color: var(--VeryLightGray);
-  }
-.end--section{
-  @include flex-1;
-  justify-content: space-between;
-    color: var(--LightGrayishBlue);
-  small{
-    font-size: 0.8rem;
-  }
-  #clear{
+#remove--button {
     @include svg-button;
     background-color: unset;
-    font-size: 0.8rem;
-    font-weight: 500;
-    font-family: var(--font);
-      color: var(--LightGrayishBlue);
-      cursor: pointer;
-    
-  }
-  .filter--section{
-    padding: 0em;
-    box-shadow: unset;
-    margin: 0;
-    display: none;
-    button{
-      margin: 0 0.2em;
+    cursor: pointer;
+    place-self: center;
+    svg {
+        pointer-events: none;
     }
-  }
-}  
-.checked{
-  opacity: 0.5;
-  text-decoration:line-through ;
-  
-  
 }
-  
+
+#checkbox {
+    position: relative;
+
+    &::before{
+          width: 25px;
+          height: 25px;
+         content: '';
+          border-radius: 50%;
+          border: 1px solid var(--VeryLightGrayishBlue);
+          position: absolute;
+          top: 0px;
+          left: -5px;
+          background-color: var(--VeryDarkDesaturatedBlue);
+          cursor: pointer;
+
+    }
+   
+}
+
+#check{
+    opacity: 0;
+}
 
 
+.end--section {
+    @include flex-1;
+    justify-content: space-between;
+    color: var(--LightGrayishBlue);
+    small {
+        font-size: 0.8rem;
+    }
+    #clear {
+        @include svg-button;
+        background-color: unset;
+        font-size: 0.8rem;
+        font-weight: 500;
+        font-family: var(--font);
+        color: var(--LightGrayishBlue);
+        cursor: pointer;
+    }
+    .filter--section {
+        padding: 0em;
+        box-shadow: unset;
+        margin: 0;
+        display: none;
+        button {
+            margin: 0 0.2em;
+        }
+    }
+}
 
+.checked {
+    opacity: 0.5;
+    text-decoration: line-through;
+}
 
-.dark{
---VeryDarkBlue: hsl(235, 21%, 11%);
---VeryDarkDesaturatedBlue: hsl(235, 24%, 19%);
---LightGrayishBlue: hsl(234, 39%, 85%);
---LightGrayishBluehover: hsl(236, 33%, 92%);
---DarkGrayishBlue: hsl(234, 11%, 52%);
---VeryDarkGrayishBlue: hsl(233, 14%, 35%);
---VeryDarkGrayishBlue: hsl(237, 14%, 26%);
+.dark--header{
+    background-image: url(../images/bg-mobile-dark.jpg);
+}
 
+.show{
+    display: none;
+}
 
-
+.dark {
+    --VeryDarkBlue: hsl(235, 21%, 11%);
+    --VeryDarkDesaturatedBlue: hsl(235, 24%, 19%);
+    --LightGrayishBlue: hsl(234, 39%, 85%);
+    --LightGrayishBluehover: hsl(236, 33%, 92%);
+    --VeryLightGrayishBlue: hsl(235, 18%, 25%);
+    --DarkGrayishBlue: hsl(234, 11%, 52%);
+    --VeryDarkGrayishBlue: hsl(234, 39%, 85%);
 }

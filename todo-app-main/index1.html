@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/style.css">
     <title>Document</title>
 </head>
+
 <body class="light">
-    
+
     <header>
         <section class="logo--section">
             <h1>todo</h1>
             <button id="theme--changer" aria-label="theme changer" role="switch">
-                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"><path fill="#FFF" fill-rule="evenodd" d="M13 0c.81 0 1.603.074 2.373.216C10.593 1.199 7 5.43 7 10.5 7 16.299 11.701 21 17.5 21c2.996 0 5.7-1.255 7.613-3.268C23.22 22.572 18.51 26 13 26 5.82 26 0 20.18 0 13S5.82 0 13 0z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" ><path fill="#FFF" fill-rule="evenodd" d="M13 0c.81 0 1.603.074 2.373.216C10.593 1.199 7 5.43 7 10.5 7 16.299 11.701 21 17.5 21c2.996 0 5.7-1.255 7.613-3.268C23.22 22.572 18.51 26 13 26 5.82 26 0 20.18 0 13S5.82 0 13 0z"/></svg>
             </button>
         </section>
 
         <section class="input--section">
 
             <form action="">
-           
+
                 <section class="todo--input">
                     <input type="text" name="todo" id="todo" aria-label="enter task" placeholder="Create a todo...">
                     <section class="overlay">
@@ -30,168 +32,40 @@
             </form>
 
         </section>
-            <section class="container">
+        <section class="container">
             <ul>
-                <li draggable="true">
-                   <section class="tasks--section">
-                       <section class="check--box">
-                         <label for="checkbox"></label>
-                         <input type="checkbox" name="check" id="check">
-                         <section class="checkbox--overlay">
-                           
-                         </section>
-                       </section>
-                       <p>lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsumlorem ipsumlorem ipsum</p>
 
-                       <button id="remove--button" aria-label="remove task">
-                           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg>
-                       </button>
+                <li class="total--area show">
+<section class="end--section">
+                        <small>
+                       
+                     </small>
+                        <section class="filter--section">
+                            <button id="all" aria-label="show all tasks">all</button>
+                            <button id="active" aria-label="show active tasks">active</button>
+                            <button id="completed" aria-label="show completed tasks">completed</button>
 
-                   </section> 
+                        </section>
+
+                        <button id="clear">clear completed</button>
+
+                    </section>
                 </li>
-                 <li>
-                   <section class="tasks--section">
-                       <section class="check--box">
-                         <label for="checkbox"></label>
-                         <input type="checkbox" name="check" id="check">
-                       </section>
-                       <p>lorem ipsum</p>
 
-                       <button id="remove--button" aria-label="remove task">
-                           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg>
-                       </button>
-
-                   </section> 
-                </li>
-                 <li>
-                   <section class="tasks--section">
-                       <section class="check--box">
-                         <label for="checkbox"></label>
-                         <input type="checkbox" name="check" id="check">
-                       </section>
-                       <p class="checked">lorem ipsum</p>
-
-                       <button id="remove--button" aria-label="remove task">
-                           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg>
-                       </button>
-
-                   </section> 
-                </li>
-                 <li>
-                   <section class="tasks--section">
-                       <section class="check--box">
-                         <label for="checkbox"></label>
-                         <input type="checkbox" name="check" id="check">
-                       </section>
-                       <p>lorem ipsum</p>
-
-                       <button id="remove--button" aria-label="remove task">
-                           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg>
-                       </button>
-
-                   </section> 
-                </li>
-                 <li>
-                   <section class="tasks--section">
-                       <section class="check--box">
-                         <label for="checkbox"></label>
-                         <input type="checkbox" name="check" id="check">
-                         <section class="checkbox--overlay">
-                           
-                         </section>
-                       </section>
-                       <p>lorem ipsum</p>
-
-                       <button id="remove--button" aria-label="remove task">
-                           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg>
-                       </button>
-
-                   </section> 
-                </li>
-                 <li>
-                   <section class="tasks--section">
-                       <section class="check--box">
-                         <label for="checkbox"></label>
-                         <input type="checkbox" name="check" id="check">
-                       </section>
-                       <p>lorem ipsum</p>
-
-                       <button id="remove--button" aria-label="remove task">
-                           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg>
-                       </button>
-
-                   </section> 
-                </li>
-                 <li>
-                   <section class="tasks--section">
-                       <section class="check--box">
-                         <label for="checkbox"></label>
-                         <input type="checkbox" name="check" id="check">
-                       </section>
-                       <p>lorem ipsum</p>
-
-                       <button id="remove--button" aria-label="remove task">
-                           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg>
-                       </button>
-
-                   </section> 
-                </li>
-                 <li>
-                   <section class="tasks--section">
-                       <section class="check--box">
-                         <label for="checkbox"></label>
-                         <input type="checkbox" name="check" id="check">
-                       </section>
-                       <p>lorem ipsum</p>
-
-                       <button id="remove--button" aria-label="remove task">
-                           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg>
-                       </button>
-
-                   </section> 
-                </li>
-                 <li>
-                   <section class="tasks--section">
-                       <section class="check--box">
-                         <label for="checkbox"></label>
-                         <input type="checkbox" name="check" id="check">
-                       </section>
-                       <p>lorem ipsum</p>
-
-                       <button id="remove--button" aria-label="remove task">
-                           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg>
-                       </button>
-
-                   </section> 
-                </li>
-                <li>
-                  <section class="end--section">
-                     <small >
-                       5 items left
-                     </small>  
-                           <section class="filter--section">
-                <button id="all" aria-label="show all tasks">all</button>
-                 <button id="active" aria-label="show active tasks">active</button>
-                  <button id="completed" aria-label="show completed tasks">completed</button>
-
-            </section>
-                   
-                   <button id="clear">clear completed</button>
-                            
-                  </section>
-                </li>
-              
+      
             </ul>
 
-            <section class="filter--section">
+            <section class="filter--section show ">
                 <button id="all" aria-label="show all tasks">all</button>
-                 <button id="active" aria-label="show active tasks">active</button>
-                  <button id="completed" aria-label="show completed tasks">completed</button>
+                <button id="active" aria-label="show active tasks">active</button>
+                <button id="completed" aria-label="show completed tasks">completed</button>
 
             </section>
 
         </section>
     </header>
 
+<script src="./js/main.js"></script>
 </body>
+
 </html>
