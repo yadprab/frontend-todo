@@ -63,12 +63,11 @@ const todoFn = () => {
     return `<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" style="pointer-events: none;"><path fill="#FFF" fill-rule="evenodd" d="M13 21a1 1 0 011 1v3a1 1 0 11-2 0v-3a1 1 0 011-1zm-5.657-2.343a1 1 0 010 1.414l-2.121 2.121a1 1 0 01-1.414-1.414l2.12-2.121a1 1 0 011.415 0zm12.728 0l2.121 2.121a1 1 0 01-1.414 1.414l-2.121-2.12a1 1 0 011.414-1.415zM13 8a5 5 0 110 10 5 5 0 010-10zm12 4a1 1 0 110 2h-3a1 1 0 110-2h3zM4 12a1 1 0 110 2H1a1 1 0 110-2h3zm18.192-8.192a1 1 0 010 1.414l-2.12 2.121a1 1 0 01-1.415-1.414l2.121-2.121a1 1 0 011.414 0zm-16.97 0l2.121 2.12A1 1 0 015.93 7.344L3.808 5.222a1 1 0 011.414-1.414zM13 0a1 1 0 011 1v3a1 1 0 11-2 0V1a1 1 0 011-1z"/></svg>   `;
   };
 
-  formFn();
-
   setTheme(header, themeSwitcher);
 
-  generateTodo();
+  formFn();
 
+  generateTodo();
   //click function for theme switcher
   themeSwitcher.addEventListener("click", getTheme);
 };
@@ -103,8 +102,7 @@ const formFn = () => {
 
     form.reset();
 
-      generateTodo();
- 
+    location.reload();
   };
 
   form.addEventListener("submit", submitFn);
@@ -122,7 +120,6 @@ const setTodo = (val) => {
     updateTodo.push(val);
 
     localStorage.setItem("todo", JSON.stringify(updateTodo));
-
   }
 };
 
@@ -140,11 +137,12 @@ const generateTodo = () => {
 
   const todoData = JSON.parse(localStorage.getItem("todo"));
 
-  ul.insertAdjacentHTML('afterbegin', generateHtml(todoData))
+  ul.insertAdjacentHTML("afterbegin", generateHtml(todoData));
 
   total.classList.remove("show");
 
-  small.textContent = `${todoData.length} items left`;
+  small.textContent =
+    todoData.length === 0 ? "no items left" : `${todoData.length} items left`;
 };
 
 const generateHtml = (data) => {
