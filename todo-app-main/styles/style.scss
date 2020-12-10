@@ -209,13 +209,17 @@ header {
         border-radius: 50%;
         border: 1px solid var(--VeryLightGrayishBlue);
         position: absolute;
-        top: 0px;
+        top: -5px;
         left: -5px;
-        background-color: var(--VeryDarkDesaturatedBlue);
+      background-color: var(--VeryDarkDesaturatedBlue);
         cursor: pointer;
+       
+       
+  
+
 
     }
-
+   
 }
 
 #check {
@@ -254,7 +258,7 @@ header {
     }
 }
 
-.checked {
+.completed {
     opacity: 0.5;
     text-decoration: line-through;
 }
@@ -265,6 +269,38 @@ header {
 
 .show {
     display: none;
+}
+
+.remove{
+  display: none;
+}
+
+.checked{
+
+.tasks--section{
+  #checkbox{
+    &::before{
+    background: linear-gradient(180deg,hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  
+  
+  }
+   &:after{
+      content:'';
+       width: 25px;
+        height: 25px;
+      position: absolute;
+      @include flex-1;
+       top: -5px;
+        left: -5px;
+      background-image: url('../images/icon-check.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+  
+    }
+  
+} 
+} 
+
 }
 
 .dark {

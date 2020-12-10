@@ -68,6 +68,7 @@ const todoFn = () => {
   formFn();
 
   generateTodo();
+  
   //click function for theme switcher
   themeSwitcher.addEventListener("click", getTheme);
 };
@@ -109,54 +110,57 @@ const formFn = () => {
 };
 
 const setTodo = (val) => {
+  const stateObj = {
+    value:val,
+    state:'new',
+  }
   if (localStorage.getItem("todo") === null) {
     const todoArr = [];
-    todoArr.push(val);
+    todoArr.push(stateObj);
 
     localStorage.setItem("todo", JSON.stringify(todoArr));
   } else {
     const updateTodo = JSON.parse(localStorage.getItem("todo"));
 
-    updateTodo.push(val);
+    updateTodo.push(stateObj);
 
     localStorage.setItem("todo", JSON.stringify(updateTodo));
   }
 };
 
 const generateTodo = () => {
-  const container = document.querySelector(".container");
-
-  const ul = container.querySelector("ul");
-
-  const total = document.querySelector(".total--area");
-
-  const small = total.querySelector("small");
-  if (localStorage.getItem("todo") === null) {
+  
+  const ul = document.querySelector('ul');
+  
+  
+  
+ if (localStorage.getItem("todo") === null) {
     return;
   }
 
   const todoData = JSON.parse(localStorage.getItem("todo"));
+  
+  
 
   ul.insertAdjacentHTML("afterbegin", generateHtml(todoData));
-
-  total.classList.remove("show");
-
-  small.textContent =
-    todoData.length === 0 ? "no items left" : `${todoData.length} items left`;
+  
+ checked();
+  
+   
 };
 
 const generateHtml = (data) => {
   return data
     .map((tasks) => {
       return `
-   <li>
+   <li class=${tasks.state}>
       <section class="tasks--section">
                         <section class="check--box">
-                            <label for="check" id="checkbox"></label>
+                            <label for="check" id="checkbox" class=''></label>
                             <input type="checkbox" name="check" id="check">
                            
                         </section>
-                        <p>${tasks}</p>
+                        <p>${tasks.value}</p>
 
                         <button id="remove--button" aria-label="remove task">
                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg>
@@ -174,6 +178,47 @@ const generateHtml = (data) => {
     })
     .join("");
 };
+
+
+const itemsLeft = ()=>{
+  const total = document.querySelector('.total--area');
+  
+  const small = total.querySelector('small');
+  total.classList.remove('show')
+  
+  const li = document.querySelectorAll('li:not(.total--area)');
+  
+  const liArr = [...li];
+  
+  
+  small.textContent = liArr.length===0?'no items left':`${liArr.length} items left`
+  
+  
+}
+
+
+const checked = ()=>{
+
+  const check = document.querySelectorAll('#checkbox');
+  
+const checkFn=(e, index)=>{
+  e.stopPropagation();
+  const changeState = JSON.parse(localStorage.getItem('todo'));
+  
+  
+  
+  changeState[index].state= 'checked completed';
+  console.log(changeState[index])
+  // localStorage.setItem('todo', JSON.stringify('changeState'))
+  
+}
+     
+  
+  check.forEach((box,index)=>box.addEventListener('click', (e)=>{checkFn(e,index)}));
+  
+}
+
+  // console.log(e)
 
 //main function
 window.addEventListener("DOMContentLoaded", todoFn);
