@@ -68,7 +68,7 @@ const todoFn = () => {
   formFn();
 
   generateTodo();
-  
+
   //click function for theme switcher
   themeSwitcher.addEventListener("click", getTheme);
 };
@@ -111,9 +111,9 @@ const formFn = () => {
 
 const setTodo = (val) => {
   const stateObj = {
-    value:val,
-    state:'new',
-  }
+    value: val,
+    state: "new",
+  };
   if (localStorage.getItem("todo") === null) {
     const todoArr = [];
     todoArr.push(stateObj);
@@ -129,24 +129,29 @@ const setTodo = (val) => {
 };
 
 const generateTodo = () => {
-  
-  const ul = document.querySelector('ul');
-  
-  
-  
- if (localStorage.getItem("todo") === null) {
+  const ul = document.querySelector("ul");
+
+  const total = document.querySelector(".total--area");
+
+  const filterSection = document.querySelector("#outer--filter");
+
+  if (localStorage.getItem("todo") === null) {
     return;
   }
 
   const todoData = JSON.parse(localStorage.getItem("todo"));
-  
-  
 
   ul.insertAdjacentHTML("afterbegin", generateHtml(todoData));
-  
- checked();
-  
-   
+
+  total.classList.remove("show");
+
+  filterSection.classList.remove("show");
+
+  checked();
+
+  completedData();
+
+  removeTask();
 };
 
 const generateHtml = (data) => {
@@ -179,46 +184,89 @@ const generateHtml = (data) => {
     .join("");
 };
 
+const checked = () => {
+  const check = document.querySelectorAll("#checkbox");
 
-const itemsLeft = ()=>{
-  const total = document.querySelector('.total--area');
-  
-  const small = total.querySelector('small');
-  total.classList.remove('show')
-  
-  const li = document.querySelectorAll('li:not(.total--area)');
-  
+  let state = false;
+
+  const checkFn = (e, index) => {
+    e.stopPropagation();
+    const parent = e.target.parentElement.parentElement.parentElement;
+
+    parent.classList.toggle("checked");
+
+    updateState(state, index, parent);
+
+    completedData();
+  };
+
+  check.forEach((box, index) =>
+    box.addEventListener("click", (e) => {
+      checkFn(e, index);
+    })
+  );
+};
+
+const updateState = (state, index, parent) => {
+  const currentState = parent.classList.contains("checked") ? !state : state;
+
+  const changeState = JSON.parse(localStorage.getItem("todo"));
+
+  if (currentState) {
+    changeState[index].state = "checked";
+    localStorage.setItem("todo", JSON.stringify(changeState));
+  } else {
+    changeState[index].state = "new";
+    localStorage.setItem("todo", JSON.stringify(changeState));
+  }
+};
+
+const completedData = () => {
+  const li = document.querySelectorAll("li:not(.total--area)");
+
+  const small = document.querySelector("small");
+
   const liArr = [...li];
-  
-  
-  small.textContent = liArr.length===0?'no items left':`${liArr.length} items left`
-  
-  
-}
 
+  const filtered = liArr.filter(
+    (list) =>
+      !list.classList.contains("checked") && !list.classList.contains("remove")
+  );
 
-const checked = ()=>{
+  small.textContent = `${filtered.length} items left`;
+};
 
-  const check = document.querySelectorAll('#checkbox');
-  
-const checkFn=(e, index)=>{
-  e.stopPropagation();
-  const changeState = JSON.parse(localStorage.getItem('todo'));
-  
-  
-  
-  changeState[index].state= 'checked completed';
-  console.log(changeState[index])
-  // localStorage.setItem('todo', JSON.stringify('changeState'))
-  
-}
-     
-  
-  check.forEach((box,index)=>box.addEventListener('click', (e)=>{checkFn(e,index)}));
-  
-}
+const removeTask = () => {
+  const remove = document.querySelectorAll("#remove--button");
 
-  // console.log(e)
+  let removedState = true;
+  const removeFn = (e, index) => {
+    const target = e.target.parentElement.parentElement;
 
+    target.classList.add("remove");
+
+    updateRemove(target, index, removedState);
+
+    completedData();
+  };
+
+  remove.forEach((button, index) =>
+    button.addEventListener("click", (e) => {
+      removeFn(e, index);
+    })
+  );
+};
+
+const updateRemove = (parent, index, state) => {
+  const currentState = parent.classList.contains("remove") ? state : !state;
+
+  const changermState = JSON.parse(localStorage.getItem("todo"));
+
+  if (currentState) {
+    changermState[index].state = "remove";
+
+    localStorage.setItem("todo", JSON.stringify(changermState));
+  }
+};
 //main function
 window.addEventListener("DOMContentLoaded", todoFn);

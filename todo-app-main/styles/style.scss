@@ -211,15 +211,15 @@ header {
         position: absolute;
         top: -5px;
         left: -5px;
-      background-color: var(--VeryDarkDesaturatedBlue);
+        background-color: var(--VeryDarkDesaturatedBlue);
         cursor: pointer;
-       
-       
-  
+
+
+
 
 
     }
-   
+
 }
 
 #check {
@@ -258,10 +258,6 @@ header {
     }
 }
 
-.completed {
-    opacity: 0.5;
-    text-decoration: line-through;
-}
 
 .dark--header {
     background-image: url(../images/bg-mobile-dark.jpg);
@@ -271,35 +267,39 @@ header {
     display: none;
 }
 
-.remove{
-  display: none;
+.remove {
+    display: none;
 }
 
-.checked{
+.checked {
+ p{
+      opacity: 0.5;
+      text-decoration: line-through;
+ }
+    .tasks--section {
+        #checkbox {
+            &::before {
+                background: linear-gradient(180deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+               border: 0;
 
-.tasks--section{
-  #checkbox{
-    &::before{
-    background: linear-gradient(180deg,hsl(192, 100%, 67%), hsl(280, 87%, 65%));
-  
-  
-  }
-   &:after{
-      content:'';
-       width: 25px;
-        height: 25px;
-      position: absolute;
-      @include flex-1;
-       top: -5px;
-        left: -5px;
-      background-image: url('../images/icon-check.svg');
-      background-repeat: no-repeat;
-      background-position: center;
-  
+            }
+
+            &:after {
+                content: '';
+                width: 25px;
+                height: 25px;
+                position: absolute;
+                @include flex-1;
+                top: -5px;
+                left: -5px;
+                background-image: url('../images/icon-check.svg');
+                background-repeat: no-repeat;
+                background-position: center;
+
+            }
+
+        }
     }
-  
-} 
-} 
 
 }
 
