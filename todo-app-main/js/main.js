@@ -152,6 +152,10 @@ const generateTodo = () => {
   completedData();
 
   removeTask();
+
+  clear();
+  
+  filterTasksArea();
 };
 
 const generateHtml = (data) => {
@@ -266,6 +270,102 @@ const updateRemove = (parent, index, state) => {
     changermState[index].state = "remove";
 
     localStorage.setItem("todo", JSON.stringify(changermState));
+  }
+};
+
+const clear = () => {
+  const clear = document.querySelector("#clear");
+
+  const liArr = document.querySelectorAll("li:not(.total--area)");
+
+  const arr = [...liArr];
+  const clearFn = (e) => {
+    e.preventDefault();
+
+    const checkedArr = arr.filter((checked) =>
+      checked.classList.contains("checked")
+    );
+
+    checkedArr.length === 0
+      ? ""
+      : checkedArr.forEach((li) => li.classList.add("remove"));
+
+    updateClear(checkedArr);
+  };
+
+  clear.addEventListener("click", clearFn);
+};
+
+const updateClear = (arr) => {
+  if (arr.length === 0) {
+    return;
+  } else {
+    const updateC = JSON.parse(localStorage.getItem("todo")).map((tasks) => {
+      if (tasks.state == "checked") {
+        tasks.state = "remove";
+      }
+
+      return tasks;
+    });
+
+    localStorage.setItem("todo", JSON.stringify(updateC));
+  }
+};
+
+const filterTasksArea = () => {
+  const filterArea = document.querySelectorAll(".filter--section");
+
+  const buttons = [...filterArea].map((area) =>
+    area.querySelectorAll("button")
+  );
+
+  const filterFn = (e) => {
+    buttons.forEach((area) =>
+      area.forEach((button) => button.classList.remove("active"))
+    );
+    e.target.classList.add("active");
+    filterTasks(e.target.id);
+  };
+
+  buttons.forEach((area) =>
+    area.forEach((button) => button.addEventListener("click", filterFn))
+  );
+};
+
+const filterTasks = (id) => {
+  const liArr = document.querySelectorAll("li:not(.total--area)");
+
+  const arr = [...liArr];
+
+  if (liArr.length == 0 || liArr === null) {
+    return;
+  }
+  switch (id) {
+    case "active":
+      arr.filter((tasks) =>
+        !tasks.classList.contains("checked") &&
+        !tasks.classList.contains("remove")
+          ? (tasks.style.display = "block")
+          : (tasks.style.display = "none")
+      );
+   
+      break;
+    case "completed":
+      arr.filter((tasks) =>
+        tasks.classList.contains("checked")
+          ? (tasks.style.display = "block")
+          : (tasks.style.display = "none")
+      );
+
+      break;
+
+    default:
+      arr.filter((tasks) =>
+        tasks.classList.contains("checked") || tasks.classList.contains("new")
+          ? (tasks.style.display = "block")
+          : (tasks.style.display = "none")
+      );
+      break;
   }
 };
 //main function

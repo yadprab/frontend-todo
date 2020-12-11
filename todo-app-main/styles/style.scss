@@ -53,6 +53,7 @@ header {
     padding: 1em;
     @include flex-2;
     justify-content: flex-start;
+    position: relative;
 
     .logo--section {
         width: 100%;
@@ -175,18 +176,19 @@ header {
     @include flex-1;
     @include box-shadow-4;
 
-    button {
-        margin: 0 1em;
-        padding: 0.3em;
-        @include svg-button;
-        background-color: unset;
-        text-transform: capitalize;
-        font-weight: 700;
-        font-family: var(--font);
-        color: var(--LightGrayishBlue);
-        cursor: pointer;
-    }
+  
 }
+  button {
+      margin: 0 1em;
+      padding: 0.3em;
+      @include svg-button;
+      background-color: unset;
+      text-transform: capitalize;
+      font-weight: 700;
+      font-family: var(--font);
+      color: var(--LightGrayishBlue);
+      cursor: pointer;
+  }
 
 #remove--button {
     @include svg-button;
@@ -226,6 +228,13 @@ header {
     opacity: 0;
 }
 
+#message {
+    margin-top: 2em;
+    text-transform: capitalize;
+    color: var(--LightGrayishBlue);
+    font-weight: 700;
+    font-size: 1rem;
+}
 
 .end--section {
     @include flex-1;
@@ -272,15 +281,16 @@ header {
 }
 
 .checked {
- p{
-      opacity: 0.5;
-      text-decoration: line-through;
- }
+    p {
+        opacity: 0.5;
+        text-decoration: line-through;
+    }
+
     .tasks--section {
         #checkbox {
             &::before {
                 background: linear-gradient(180deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
-               border: 0;
+                border: 0;
 
             }
 
@@ -301,6 +311,11 @@ header {
         }
     }
 
+}
+
+.active {
+    color: var(--BrightBlue);
+    
 }
 
 .dark {

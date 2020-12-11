@@ -91,6 +91,7 @@ header {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  position: relative;
 }
 
 header .logo--section {
@@ -277,7 +278,7 @@ header .input--section form .todo--input .overlay {
           box-shadow: 0 5px 10px -5px rgba(0, 0, 0, var(--alpha-4));
 }
 
-.filter--section button {
+button {
   margin: 0 1em;
   padding: 0.3em;
   -webkit-appearance: none;
@@ -325,6 +326,14 @@ header .input--section form .todo--input .overlay {
 
 #check {
   opacity: 0;
+}
+
+#message {
+  margin-top: 2em;
+  text-transform: capitalize;
+  color: var(--LightGrayishBlue);
+  font-weight: 700;
+  font-size: 1rem;
 }
 
 .end--section {
@@ -414,6 +423,10 @@ header .input--section form .todo--input .overlay {
   background-image: url("../images/icon-check.svg");
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.active {
+  color: var(--BrightBlue);
 }
 
 .dark {
