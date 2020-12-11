@@ -1,81 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./styles/style.css" />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   
   <title>Frontend Mentor | Todo app</title>
 
-  </head>
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
 
-  <body class="light">
-    <header>
-      <section class="logo--section">
-        <h1>todo</h1>
-        <button id="theme--changer" aria-label="theme changer" role="switch">
-          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26">
-            <path
-              fill="#FFF"
-              fill-rule="evenodd"
-              d="M13 0c.81 0 1.603.074 2.373.216C10.593 1.199 7 5.43 7 10.5 7 16.299 11.701 21 17.5 21c2.996 0 5.7-1.255 7.613-3.268C23.22 22.572 18.51 26 13 26 5.82 26 0 20.18 0 13S5.82 0 13 0z"
-            />
-          </svg>
-        </button>
-      </section>
+  Todo
 
-      <section class="input--section">
-        <form action="">
-          <section class="todo--input">
-            <input
-              type="text"
-              name="todo"
-              id="todo"
-              aria-label="enter task"
-              placeholder="Create a todo..."
-            />
-            <section class="overlay"></section>
-          </section>
-        </form>
-      </section>
-      <section class="container">
-        <ul>
-          <li class="total--area show">
-            <section class="end--section">
-              <small></small>
-              <section class="filter--section">
-                <button id="all" aria-label="show all tasks">all</button>
-                <button id="active" aria-label="show active tasks">
-                  active
-                </button>
-                <button id="completed" aria-label="show completed tasks">
-                  completed
-                </button>
-              </section>
+  <!-- Add dynamic number --> items left
 
-              <button id="clear">clear completed</button>
-            </section>
-          </li>
-        </ul>
+  All
+  Active 
+  Completed
 
-        <section class="filter--section show" id="outer--filter">
-          <button id="all" aria-label="show all tasks">all</button>
-          <button id="active" aria-label="show active tasks">active</button>
-          <button id="completed" aria-label="show completed tasks">
-            completed
-          </button>
-        </section>
-      </section>
+  Clear Completed
 
-      <p id="message" class="show">drag and drop to reorder list</p>
-    </header>
+  Drag and drop to reorder list
 
-    <footer class="attribution">
+  <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="https://github.com/yadprab">Yathavan prabhakar</a>.
-  </footer>
-
-    <script src="./js/main.js"></script>
-  </body>
+    Coded by <a href="#">Your Name Here</a>.
+  </div>
+</body>
 </html>
