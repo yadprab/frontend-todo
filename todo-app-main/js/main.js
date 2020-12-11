@@ -135,6 +135,8 @@ const generateTodo = () => {
 
   const filterSection = document.querySelector("#outer--filter");
 
+  const msg = document.querySelector('#message');
+
   if (localStorage.getItem("todo") === null) {
     return;
   }
@@ -147,6 +149,8 @@ const generateTodo = () => {
 
   filterSection.classList.remove("show");
 
+  msg.classList.remove('show')
+
   checked();
 
   completedData();
@@ -154,30 +158,36 @@ const generateTodo = () => {
   removeTask();
 
   clear();
-  
+
   filterTasksArea();
+
+  dragAndDrop();
 };
 
 const generateHtml = (data) => {
   return data
-    .map((tasks) => {
+    .map((tasks, index) => {
       return `
-   <li class=${tasks.state}>
-      <section class="tasks--section">
-                        <section class="check--box">
-                            <label for="check" id="checkbox" class=''></label>
-                            <input type="checkbox" name="check" id="check">
-                           
-                        </section>
-                        <p>${tasks.value}</p>
+  <li class="${tasks.state}" data-index="${index}" id="list">
+  <section class="tasks--section" draggable="true">
+    <section class="check--box">
+      <label for="check" id="checkbox" class=""></label>
+      <input type="checkbox" name="check" id="check" />
+    </section>
+    <p>${tasks.value}</p>
 
-                        <button id="remove--button" aria-label="remove task">
-                           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg>
-                       </button>
+    <button id="remove--button" aria-label="remove task">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18">
+        <path
+          fill="#494C6B"
+          fill-rule="evenodd"
+          d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"
+        />
+      </svg>
+    </button>
+  </section>
+</li>
 
-                    </section>
-     </li>
-   
 
    
   
@@ -348,7 +358,7 @@ const filterTasks = (id) => {
           ? (tasks.style.display = "block")
           : (tasks.style.display = "none")
       );
-   
+
       break;
     case "completed":
       arr.filter((tasks) =>
@@ -367,6 +377,74 @@ const filterTasks = (id) => {
       );
       break;
   }
+};
+
+const dragAndDrop = () => {
+  const list = document.querySelectorAll("li:not(.total--area)");
+
+  const tasksSection = document.querySelectorAll(".tasks--section");
+
+  let startIndex;
+  if (list.length === 0 || list === null) {
+    return;
+  }
+
+  const dragStartFn = (e) => {
+    startIndex = e.target.closest("li").getAttribute("data-index");
+  };
+
+  tasksSection.forEach((sect) =>
+    sect.addEventListener("dragstart", dragStartFn)
+  );
+
+  list.forEach((list) => {
+    list.addEventListener("dragover", overFn, { capture: true });
+    list.addEventListener(
+      "drop",
+      (e) => {
+        dropFn(e, startIndex);
+      },
+      { capture: true }
+    );
+    list.addEventListener("dragenter", enterFn, { capture: true });
+    list.addEventListener("dragleave", leaveFn, { capture: true });
+  });
+};
+
+const overFn = (e) => {
+  e.preventDefault();
+};
+
+const dropFn = (e, start) => {
+  e.stopPropagation();
+
+  const endIndex = e.target.getAttribute("data-index");
+
+  endIndex === null ? "" : swapFn(start, endIndex);
+  e.target.id == "list" ? e.target.classList.remove("over") : "";
+};
+
+const enterFn = (e) => {
+  e.stopPropagation();
+  e.target.id == "list" ? e.target.classList.add("over") : "";
+};
+
+const leaveFn = (e) => {
+  e.stopPropagation();
+  e.target.id == "list" ? e.target.classList.remove("over") : "";
+};
+
+const swapFn = (start, end) => {
+  const list = document.querySelectorAll("li:not(.total--area)");
+
+  const lists = [...list];
+  const itemOne = lists[start].querySelector(".tasks--section");
+
+  const itemTwo = lists[end].querySelector(".tasks--section");
+
+  list[start].appendChild(itemTwo);
+
+  list[end].appendChild(itemOne);
 };
 //main function
 window.addEventListener("DOMContentLoaded", todoFn);

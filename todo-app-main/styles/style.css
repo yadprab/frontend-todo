@@ -36,6 +36,7 @@
   --LightGrayishBlue: hsl(233, 11%, 84%);
   --DarkGrayishBlue: hsl(236, 9%, 61%);
   --VeryDarkGrayishBlue: hsl(235, 19%, 35%);
+  --LightGrayishBluehover: hsl(235, 18%, 25%);
 }
 
 * {
@@ -133,6 +134,7 @@ header .logo--section button svg {
 }
 
 header .input--section {
+  max-width: 480px;
   width: 100%;
   height: 40px;
 }
@@ -278,6 +280,10 @@ header .input--section form .todo--input .overlay {
           box-shadow: 0 5px 10px -5px rgba(0, 0, 0, var(--alpha-4));
 }
 
+.filter--section button:hover {
+  color: var(--LightGrayishBluehover);
+}
+
 button {
   margin: 0 1em;
   padding: 0.3em;
@@ -322,6 +328,11 @@ button {
   left: -5px;
   background-color: var(--VeryDarkDesaturatedBlue);
   cursor: pointer;
+}
+
+#checkbox:hover::before {
+  background-image: url(../images/border.svg);
+  border: 0;
 }
 
 #check {
@@ -381,6 +392,10 @@ button {
   margin: 0 0.2em;
 }
 
+.over {
+  background-color: var(--VeryLightGrayishBlue);
+}
+
 .dark--header {
   background-image: url(../images/bg-mobile-dark.jpg);
 }
@@ -427,6 +442,39 @@ button {
 
 .active {
   color: var(--BrightBlue);
+}
+
+@media screen and (min-width: 481px) {
+  header {
+    max-width: 768px;
+  }
+  header .logo--section {
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  header {
+    max-width: 900px;
+  }
+  .container {
+    -ms-grid-columns: (450px)[1];
+        grid-template-columns: repeat(1, 450px);
+  }
+  .container .end--section .filter--section {
+    display: block;
+  }
+  .container #outer--filter {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 901px) {
+  header {
+    max-width: 100%;
+    height: 250px;
+  }
 }
 
 .dark {
