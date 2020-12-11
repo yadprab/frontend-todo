@@ -472,8 +472,11 @@ footer a {
     max-width: 768px;
   }
   header .logo--section {
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    max-width: 480px;
+    margin: 1em 0;
   }
 }
 
