@@ -506,6 +506,7 @@ const history = () => {
     const hisSect = document.querySelector(".show--history");
 
     hisSect.classList.add("in");
+    hisSect.classList.remove("show");
 
     closeFn(hisSect);
 
@@ -524,6 +525,7 @@ const closeFn = (sect) => {
     e.preventDefault();
 
     sect.classList.remove("in");
+    sect.classList.add("show");
   };
 
   close.addEventListener("click", closeFn);
