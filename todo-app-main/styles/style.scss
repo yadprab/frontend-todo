@@ -84,7 +84,8 @@ header {
     .input--section {
         max-width: 480px;
         width: 100%;
-        height: 40px;
+        height: 50px;
+
 
         form {
             width: 100%;
@@ -97,7 +98,7 @@ header {
 
                 input {
                     width: 100%;
-                    height: 100%;
+                    height: 50px;
                     appearance: none;
                     border: none;
                     padding: 1em 3em;
@@ -120,8 +121,8 @@ header {
                     border-radius: 50%;
                     border: 1px solid var(--VeryLightGrayishBlue);
                     position: absolute;
-                    top: 9px;
-                    left: 8px;
+                    top: 15px;
+                    left: 10px;
                 }
             }
         }
@@ -251,13 +252,13 @@ footer {
     right: 0;
     left: 0;
     font-size: 0.8rem;
-   @include flex-1;
-   color: var(--LightGrayishBlue);
+    @include flex-1;
+    color: var(--LightGrayishBlue);
 
-   a{
-       color: var(--BrightBlue);
-       text-decoration: none;
-   }
+    a {
+        color: var(--BrightBlue);
+        text-decoration: none;
+    }
 }
 
 #check {
@@ -372,8 +373,15 @@ footer {
 @media screen and (min-width:769px) {
     header {
         max-width: 900px;
+        height: 300px;
+        background-position: initial;
+        background-image: url(../images/bg-desktop-light.jpg);
 
-  
+        .logo--section {
+            h1 {
+                font-size: 2rem;
+            }
+        }
 
     }
 
@@ -389,6 +397,10 @@ footer {
         #outer--filter {
             display: none;
         }
+    }
+
+    .dark--header {
+        background-image: url(../images/bg-desktop-dark.jpg);
     }
 }
 
