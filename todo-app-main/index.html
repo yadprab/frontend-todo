@@ -14,7 +14,8 @@
     <header>
       <section class="logo--section">
         <h1>todo</h1>
-        <button id="theme--changer" aria-label="theme changer" role="switch">
+         <section class="button--section">
+               <button id="theme--changer" aria-label="theme changer" role="switch">
           <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26">
             <path
               fill="#FFF"
@@ -23,6 +24,8 @@
             />
           </svg>
         </button>
+        <button id="history--button" aria-label="history button">history</button>
+         </section>
       </section>
 
       <section class="input--section">
@@ -70,6 +73,25 @@
 
       <p id="message" class="show">drag and drop to reorder list</p>
     </header>
+
+    <section class="show--history">
+      <h2>history</h2>
+    <section class="task--history">
+
+    </section>
+    <section class="legends">
+      <p>completed</p>
+       <p>active</p>
+        <p>removed</p>
+    </section>
+
+    <button id="close--button" aria-label="close button">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 18L18 6M6 6L18 18" stroke="#4A5568" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+    </button>
+    </section>
 
     <footer class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 

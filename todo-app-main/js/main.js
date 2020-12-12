@@ -71,6 +71,8 @@ const todoFn = () => {
 
   generateTodo(); // calling generate todo that generates html to update storage
 
+  history(); //custom check history function
+
   // 1.2 click function for theme switcher
   themeSwitcher.addEventListener("click", getTheme);
 };
@@ -491,4 +493,66 @@ const swapFn = (start, end) => {
   list[end].appendChild(itemOne);
 };
 
+/*custom  feature
+history of tasks*/
+
+const history = () => {
+  //history button
+  const historyButton = document.querySelector("#history--button");
+
+  const clickFn = (e) => {
+    e.preventDefault();
+    //get history section
+    const hisSect = document.querySelector(".show--history");
+
+    hisSect.classList.add("in");
+
+    closeFn(hisSect);
+
+    showHistory();
+  };
+
+  //click event for history button
+  historyButton.addEventListener("click", clickFn);
+};
+
+const closeFn = (sect) => {
+  //get close button
+  const close = document.querySelector("#close--button");
+
+  const closeFn = (e) => {
+    e.preventDefault();
+
+    sect.classList.remove("in");
+  };
+
+  close.addEventListener("click", closeFn);
+};
+
+const showHistory = () => {
+  const taskHisSection = document.querySelector(".task--history");
+
+  if (
+    localStorage.getItem("todo") === null ||
+    localStorage.getItem("todo").length == 0
+  ) {
+    taskHisSection.innerHTML = `<p>empty</p>`;
+  } else {
+    const taskHistory = JSON.parse(localStorage.getItem("todo"));
+
+    taskHisSection.innerHTML = taskHistory
+      .map((history) => {
+        return `
+          <p id=${history.state}>${history.value}  
+          <span id='date'>${new Date()
+            .toJSON()
+            .slice(0, 10)
+            .replace(/-/g, "/")} </span>
+          </p>   
+        
+        `;
+      })
+      .join("");
+  }
+};
 window.addEventListener("DOMContentLoaded", todoFn); //1.main function

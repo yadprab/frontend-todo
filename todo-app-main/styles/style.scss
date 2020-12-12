@@ -4,6 +4,8 @@
 :root {
     --font: 'Josefin Sans', sans-serif;
     --BrightBlue: hsl(220, 98%, 61%);
+    --red: hsl(356, 69%, 56%);
+    --green: hsl(163, 72%, 41%);
 }
 
 .light {
@@ -42,6 +44,7 @@ body {
     height: 100vh;
     font-family: var(--font);
     line-height: 1.5;
+    overflow-x: hidden;
 }
 
 header {
@@ -163,7 +166,7 @@ header {
                 grid-template-columns: 50px 1fr auto;
 
                 p {
-                    font-size: .8rem;
+                    font-size: 1rem;
                     color: var(--VeryDarkGrayishBlue);
                 }
             }
@@ -199,6 +202,16 @@ button {
     font-family: var(--font);
     color: var(--LightGrayishBlue);
     cursor: pointer;
+}
+
+.button--section {
+
+    @include flex-1;
+
+    #history--button {
+        font-size: 1rem;
+        color: hsl(0, 0%, 98%)
+    }
 }
 
 #remove--button {
@@ -244,6 +257,112 @@ button {
 
     }
 
+}
+
+.show--history {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    padding: 1em;
+    background-color: var(--VeryDarkDesaturatedBlue);
+    z-index: 9000;
+    width: 250px;
+    @include flex-2;
+    justify-content: flex-start;
+    transform: translateX(100%);
+    transition: transform 0.4s ease-in;
+    @include box-shadow-4;
+
+    h2 {
+        align-self: flex-start;
+        color: var(--LightGrayishBlue);
+        text-transform: capitalize;
+        letter-spacing: 1px;
+    }
+
+    .task--history {
+        list-style: none;
+        color: var(--LightGrayishBlue);
+
+        align-self: stretch;
+
+        p {
+            margin: 1em 0;
+            text-transform: capitalize;
+        }
+
+        #new {
+            color: var(--BrightBlue);
+        }
+
+        #checked {
+            color: var(--green);
+        }
+
+        #remove {
+            color: var(--red);
+        }
+
+        #date {
+            color: var(--LightGrayishBlue);
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 400;
+            margin-left: 0.5em;
+            font-size: 0.8rem;
+
+        }
+
+    }
+
+    .legends {
+
+        align-self: stretch;
+        @include flex-1;
+        padding: 1em;
+
+        margin-top: auto;
+
+        p {
+            margin-left: 1em;
+            color: var(--LightGrayishBlue);
+            position: relative;
+            font-size: 0.9rem;
+            text-transform: capitalize;
+
+            &::after {
+                @include after--before;
+                bottom: 0px;
+                top: 20px;
+                margin-top: 0.3em;
+                left: 20px;
+                width: 10px;
+                height: 10px;
+                background-color: var(--LightGrayishBlue);
+                border-radius: 50%;
+            }
+
+            &:nth-child(1)::after {
+                background-color: var(--green);
+            }
+
+            &:nth-child(2)::after {
+                background-color: var(--BrightBlue);
+
+            }
+
+            &:nth-child(3)::after {
+                background-color: var(--red);
+
+            }
+        }
+    }
+
+    #close--button {
+        position: absolute;
+        right: 0;
+    }
 }
 
 footer {
@@ -356,6 +475,10 @@ footer {
 .active {
     color: var(--BrightBlue);
 
+}
+
+.in {
+    transform: translateX(0);
 }
 
 @media screen and (min-width:481px) {

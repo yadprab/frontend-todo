@@ -26,6 +26,8 @@
 :root {
   --font: 'Josefin Sans', sans-serif;
   --BrightBlue: hsl(220, 98%, 61%);
+  --red: hsl(356, 69%, 56%);
+  --green: hsl(163, 72%, 41%);
 }
 
 .light {
@@ -66,6 +68,7 @@ body {
   height: 100vh;
   font-family: var(--font);
   line-height: 1.5;
+  overflow-x: hidden;
 }
 
 header {
@@ -258,7 +261,7 @@ header .input--section form .todo--input .overlay {
 }
 
 .container ul li .tasks--section p {
-  font-size: .8rem;
+  font-size: 1rem;
   color: var(--VeryDarkGrayishBlue);
 }
 
@@ -299,6 +302,23 @@ button {
   cursor: pointer;
 }
 
+.button--section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.button--section #history--button {
+  font-size: 1rem;
+  color: #fafafa;
+}
+
 #remove--button {
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -333,6 +353,141 @@ button {
 #checkbox:hover::before {
   background-image: url(../images/border.svg);
   border: 0;
+}
+
+.show--history {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  padding: 1em;
+  background-color: var(--VeryDarkDesaturatedBlue);
+  z-index: 9000;
+  width: 250px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  -webkit-transition: -webkit-transform 0.4s ease-in;
+  transition: -webkit-transform 0.4s ease-in;
+  transition: transform 0.4s ease-in;
+  transition: transform 0.4s ease-in, -webkit-transform 0.4s ease-in;
+  -webkit-box-shadow: 0 5px 10px -5px rgba(0, 0, 0, var(--alpha-4));
+          box-shadow: 0 5px 10px -5px rgba(0, 0, 0, var(--alpha-4));
+}
+
+.show--history h2 {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  color: var(--LightGrayishBlue);
+  text-transform: capitalize;
+  letter-spacing: 1px;
+}
+
+.show--history .task--history {
+  list-style: none;
+  color: var(--LightGrayishBlue);
+  -ms-flex-item-align: stretch;
+      -ms-grid-row-align: stretch;
+      align-self: stretch;
+}
+
+.show--history .task--history p {
+  margin: 1em 0;
+  text-transform: capitalize;
+}
+
+.show--history .task--history #new {
+  color: var(--BrightBlue);
+}
+
+.show--history .task--history #checked {
+  color: var(--green);
+}
+
+.show--history .task--history #remove {
+  color: var(--red);
+}
+
+.show--history .task--history #date {
+  color: var(--LightGrayishBlue);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  margin-left: 0.5em;
+  font-size: 0.8rem;
+}
+
+.show--history .legends {
+  -ms-flex-item-align: stretch;
+      align-self: stretch;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1em;
+  margin-top: auto;
+}
+
+.show--history .legends p {
+  margin-left: 1em;
+  color: var(--LightGrayishBlue);
+  position: relative;
+  font-size: 0.9rem;
+  text-transform: capitalize;
+}
+
+.show--history .legends p::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  bottom: 0px;
+  top: 20px;
+  margin-top: 0.3em;
+  left: 20px;
+  width: 10px;
+  height: 10px;
+  background-color: var(--LightGrayishBlue);
+  border-radius: 50%;
+}
+
+.show--history .legends p:nth-child(1)::after {
+  background-color: var(--green);
+}
+
+.show--history .legends p:nth-child(2)::after {
+  background-color: var(--BrightBlue);
+}
+
+.show--history .legends p:nth-child(3)::after {
+  background-color: var(--red);
+}
+
+.show--history #close--button {
+  position: absolute;
+  right: 0;
 }
 
 footer {
@@ -465,6 +620,11 @@ footer a {
 
 .active {
   color: var(--BrightBlue);
+}
+
+.in {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
 }
 
 @media screen and (min-width: 481px) {
