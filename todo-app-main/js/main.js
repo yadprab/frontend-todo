@@ -1,4 +1,4 @@
-//todo function
+//1.1 todo function main function
 const todoFn = () => {
   //get theme switcher button
   const themeSwitcher = document.querySelector("#theme--changer");
@@ -9,12 +9,14 @@ const todoFn = () => {
   //get header to change background
   const header = document.querySelector("header");
 
+  //create an object for setting theme
   const themeObj = {
     head: "",
     body: "",
     icon: "",
   };
-  //get theme function
+
+  // 1.3get theme function to get user selection
   const getTheme = (e) => {
     //prevent default actions
     e.preventDefault();
@@ -58,112 +60,129 @@ const todoFn = () => {
     }
   };
 
-  //sun icon function
+  // 1.3.1 sun icon function
   const sunIcon = () => {
     return `<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" style="pointer-events: none;"><path fill="#FFF" fill-rule="evenodd" d="M13 21a1 1 0 011 1v3a1 1 0 11-2 0v-3a1 1 0 011-1zm-5.657-2.343a1 1 0 010 1.414l-2.121 2.121a1 1 0 01-1.414-1.414l2.12-2.121a1 1 0 011.415 0zm12.728 0l2.121 2.121a1 1 0 01-1.414 1.414l-2.121-2.12a1 1 0 011.414-1.415zM13 8a5 5 0 110 10 5 5 0 010-10zm12 4a1 1 0 110 2h-3a1 1 0 110-2h3zM4 12a1 1 0 110 2H1a1 1 0 110-2h3zm18.192-8.192a1 1 0 010 1.414l-2.12 2.121a1 1 0 01-1.415-1.414l2.121-2.121a1 1 0 011.414 0zm-16.97 0l2.121 2.12A1 1 0 015.93 7.344L3.808 5.222a1 1 0 011.414-1.414zM13 0a1 1 0 011 1v3a1 1 0 11-2 0V1a1 1 0 011-1z"/></svg>   `;
   };
 
-  setTheme(header, themeSwitcher);
+  setTheme(header, themeSwitcher); //calling set theme to update storage
 
-  formFn();
+  formFn(); // calling form function to update user input
 
-  generateTodo();
+  generateTodo(); // calling generate todo that generates html to update storage
 
-  //click function for theme switcher
+  // 1.2 click function for theme switcher
   themeSwitcher.addEventListener("click", getTheme);
 };
 
+//2.0 set theme to update storage
 const setTheme = (headerChange, button) => {
+  //checking local storage to avoid errors
   if (localStorage.getItem("theme") === null) {
-    return;
+    return; // if doesn't exists return
   } else {
+    //if exists get the object
     const themeData = JSON.parse(localStorage.getItem("theme"));
 
-    const { head, body, icon } = themeData;
+    const { head, body, icon } = themeData; //destructuring the object
 
-    headerChange.className = head;
+    headerChange.className = head; //now set the bg for respective theme
 
-    document.body.className = body;
+    document.body.className = body; //now set the theme that user selected
 
-    button.innerHTML = icon;
+    button.innerHTML = icon; //now set the icon for respective theme
   }
 };
 
+//3.0 now get user input for the tasks that user entered
 const formFn = () => {
-  //get form
+  //get form element
   const form = document.querySelector("form");
 
   const submitFn = (e) => {
-    //prevent default actions
-    e.preventDefault();
+    e.preventDefault(); //prevent default actions
 
-    const input = form.querySelector("input").value;
+    const input = form.querySelector("input").value; //get the input value
 
+    //if user submits without value show an alert else call function 4.0
     input.trim() == "" ? window.alert("enter the value") : setTodo(input);
 
-    form.reset();
+    form.reset(); //clear input filed
 
-    location.reload();
+    location.reload(); // to update from storage more about this in function 5.0
   };
 
-  form.addEventListener("submit", submitFn);
+  form.addEventListener("submit", submitFn); //3.1 submit event to get the input
 };
 
+//4.0 set user input to the storage
 const setTodo = (val) => {
+  //todo  object with state
   const stateObj = {
-    value: val,
-    state: "new",
+    value: val, //input value
+    state: "new", //current state new task or active one
   };
+  //checking storage whether it contains todo item
   if (localStorage.getItem("todo") === null) {
-    const todoArr = [];
-    todoArr.push(stateObj);
+    const todoArr = []; // if not create an array
 
-    localStorage.setItem("todo", JSON.stringify(todoArr));
+    todoArr.push(stateObj); //push the current object
+
+    localStorage.setItem("todo", JSON.stringify(todoArr)); //set it to the local storage
   } else {
+    //if already exist just get the array
     const updateTodo = JSON.parse(localStorage.getItem("todo"));
 
-    updateTodo.push(stateObj);
+    updateTodo.push(stateObj); //update array for each input
 
-    localStorage.setItem("todo", JSON.stringify(updateTodo));
+    localStorage.setItem("todo", JSON.stringify(updateTodo)); // set updated array to the ls
   }
 };
 
+//5.0 function to generate html
 const generateTodo = () => {
-  const ul = document.querySelector("ul");
+  const ul = document.querySelector("ul"); //get ul element
 
-  const total = document.querySelector(".total--area");
+  const total = document.querySelector(".total--area"); //get total area element to add dynamic numbers
 
-  const filterSection = document.querySelector("#outer--filter");
+  const filterSection = document.querySelector("#outer--filter"); //get filter section
 
-  const msg = document.querySelector('#message');
+  const msg = document.querySelector("#message"); // get message section
 
+  //checking it to avoid error
   if (localStorage.getItem("todo") === null) {
     return;
   }
 
-  const todoData = JSON.parse(localStorage.getItem("todo"));
+  const todoData = JSON.parse(localStorage.getItem("todo")); // if exists get the array
+
+  //**generate html using fun 5.1 based on values.
+
+  //** note:insertAdjacentHTML  prints everything  thats why we need to reload
 
   ul.insertAdjacentHTML("afterbegin", generateHtml(todoData));
 
+  //{after user submits show all the sections including message}//
   total.classList.remove("show");
 
   filterSection.classList.remove("show");
 
-  msg.classList.remove('show')
+  msg.classList.remove("show");
 
-  checked();
+  checked(); //fun 6.0 for completed tasks
 
-  completedData();
+  completedData(); //fun  7.0 for dynamic numbers section
 
-  removeTask();
+  removeTask(); //fun 8.0 for remove tasks
 
-  clear();
+  clear(); //fun 9.0 for clear completed tasks
 
-  filterTasksArea();
+  filterTasksArea(); //fun 10.0 for filter tasks
 
-  dragAndDrop();
+  dragAndDrop(); //fun 11.0 for drag and drop functionality
 };
 
+//5.1 html function // set state as class and index for d&d
 const generateHtml = (data) => {
   return data
     .map((tasks, index) => {
@@ -198,22 +217,24 @@ const generateHtml = (data) => {
     .join("");
 };
 
+//6.0 checked fun for tasks
 const checked = () => {
-  const check = document.querySelectorAll("#checkbox");
+  const check = document.querySelectorAll("#checkbox"); //get custom checkbox label
 
-  let state = false;
+  let state = false; //checked state is false
 
   const checkFn = (e, index) => {
     e.stopPropagation();
-    const parent = e.target.parentElement.parentElement.parentElement;
+    const parent = e.target.parentElement.parentElement.parentElement; //get parent ele based on your html
 
-    parent.classList.toggle("checked");
+    parent.classList.toggle("checked"); // add checked class
 
-    updateState(state, index, parent);
+    updateState(state, index, parent); // to update we need an function 6.1
 
-    completedData();
+    completedData(); //calling function 7.0 to update each entry
   };
 
+  // add events for  each check boxes
   check.forEach((box, index) =>
     box.addEventListener("click", (e) => {
       checkFn(e, index);
@@ -221,11 +242,14 @@ const checked = () => {
   );
 };
 
+//6.1 update checked state
 const updateState = (state, index, parent) => {
+  // after add class checking if it contains or not if then change state
   const currentState = parent.classList.contains("checked") ? !state : state;
 
-  const changeState = JSON.parse(localStorage.getItem("todo"));
+  const changeState = JSON.parse(localStorage.getItem("todo")); //get the todo array form ls
 
+  //if state true update state(based on your class name) else default state
   if (currentState) {
     changeState[index].state = "checked";
     localStorage.setItem("todo", JSON.stringify(changeState));
@@ -235,21 +259,24 @@ const updateState = (state, index, parent) => {
   }
 };
 
+// 7.0 to add dynamic numbers
 const completedData = () => {
-  const li = document.querySelectorAll("li:not(.total--area)");
+  const li = document.querySelectorAll("li:not(.total--area)"); //get all the li except filter section
 
-  const small = document.querySelector("small");
+  const small = document.querySelector("small"); //small element for dynamic numbers
 
-  const liArr = [...li];
+  const liArr = [...li]; //create an array from node list
 
+  //filter out the task that doesn't checked or removed
   const filtered = liArr.filter(
     (list) =>
       !list.classList.contains("checked") && !list.classList.contains("remove")
   );
 
-  small.textContent = `${filtered.length} items left`;
+  small.textContent = `${filtered.length} items left`; //set the filtered length for the items left
 };
 
+//8.0 to remove tasks similar to fun 6.0
 const removeTask = () => {
   const remove = document.querySelectorAll("#remove--button");
 
@@ -270,7 +297,7 @@ const removeTask = () => {
     })
   );
 };
-
+//8.1 to update removed similar func as 6.1
 const updateRemove = (parent, index, state) => {
   const currentState = parent.classList.contains("remove") ? state : !state;
 
@@ -283,6 +310,7 @@ const updateRemove = (parent, index, state) => {
   }
 };
 
+//9.0 for clear completed function similar to checked
 const clear = () => {
   const clear = document.querySelector("#clear");
 
@@ -306,6 +334,14 @@ const clear = () => {
   clear.addEventListener("click", clearFn);
 };
 
+// 9.1 update clear
+/*
+this is little different compared to 6.1
+update function because we removed or adding 
+single ele but here we're removing bunch of 
+tasks so get from local storage map through it 
+change the state it returns an array and update it 
+*/
 const updateClear = (arr) => {
   if (arr.length === 0) {
     return;
@@ -322,6 +358,11 @@ const updateClear = (arr) => {
   }
 };
 
+//10.0 filter tasks
+/* 
+get the all three buttons
+add event and & remove the active class
+get the id send it o fun 10.1*/
 const filterTasksArea = () => {
   const filterArea = document.querySelectorAll(".filter--section");
 
@@ -342,6 +383,8 @@ const filterTasksArea = () => {
   );
 };
 
+/* 10.1 based on id filter the tasks
+by checking the class  */
 const filterTasks = (id) => {
   const liArr = document.querySelectorAll("li:not(.total--area)");
 
@@ -379,6 +422,7 @@ const filterTasks = (id) => {
   }
 };
 
+//11.o drag and drop function
 const dragAndDrop = () => {
   const list = document.querySelectorAll("li:not(.total--area)");
 
@@ -446,5 +490,5 @@ const swapFn = (start, end) => {
 
   list[end].appendChild(itemOne);
 };
-//main function
-window.addEventListener("DOMContentLoaded", todoFn);
+
+window.addEventListener("DOMContentLoaded", todoFn); //1.main function
