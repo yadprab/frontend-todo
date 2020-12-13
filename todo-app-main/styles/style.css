@@ -57,6 +57,7 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+   height:100℅;
 }
 
 img {
@@ -66,7 +67,7 @@ img {
 
 body {
   background-color: var(--VeryDarkBlue);
-  height: 100vh;
+ height:100℅;
   font-family: var(--font);
   line-height: 1.5;
 }
