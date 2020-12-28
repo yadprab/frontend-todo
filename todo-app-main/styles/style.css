@@ -209,8 +209,8 @@ header .input--section form .todo--input .overlay {
   width: 100%;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (300px)[1];
-      grid-template-columns: repeat(1, 300px);
+  -ms-grid-columns: (minmax(300px, 1fr))[1];
+      grid-template-columns: repeat(1, minmax(300px, 1fr));
   place-content: center;
   gap: 1rem;
   position: relative;
@@ -261,7 +261,10 @@ header .input--section form .todo--input .overlay {
 }
 
 .container ul li .tasks--section p {
+  max-width: 200px;
   font-size: 1rem;
+  display: inline-block;
+  overflow-wrap: break-word;
   color: var(--VeryDarkGrayishBlue);
 }
 

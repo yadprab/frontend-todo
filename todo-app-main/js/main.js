@@ -32,7 +32,7 @@ const todoFn = () => {
         //body class dark
         document.body.className = "dark";
         //change icon
-        themeSwitcher.innerHTML = sunIcon();
+        themeSwitcher.innerHTM, nL = sunIcon();
         //update theme object
         themeObj.head = header.className;
         themeObj.body = document.body.className;
@@ -508,7 +508,7 @@ const history = () => {
     hisSect.classList.add("in");
     hisSect.classList.remove("show");
 
-    closeFn(hisSect);
+    closeFun(hisSect);
 
     showHistory();
   };
@@ -517,7 +517,7 @@ const history = () => {
   historyButton.addEventListener("click", clickFn);
 };
 
-const closeFn = (sect) => {
+const closeFun = (sect) => {
   //get close button
   const close = document.querySelector("#close--button");
 

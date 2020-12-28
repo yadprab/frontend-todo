@@ -136,7 +136,7 @@ header {
 .container {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(1, 300px);
+    grid-template-columns: repeat(1, minmax(300px, 1fr));
     place-content: center;
     gap: 1rem;
     position: relative;
@@ -167,7 +167,10 @@ header {
                 grid-template-columns: 50px 1fr auto;
 
                 p {
+                    max-width: 200px;
                     font-size: 1rem;
+                    display: inline-block;
+                     overflow-wrap: break-word;
                     color: var(--VeryDarkGrayishBlue);
                 }
             }
