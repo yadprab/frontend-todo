@@ -32,7 +32,7 @@ const todoFn = () => {
         //body class dark
         document.body.className = "dark";
         //change icon
-        themeSwitcher.innerHTM, nL = sunIcon();
+        themeSwitcher.innerHTML = sunIcon();
         //update theme object
         themeObj.head = header.className;
         themeObj.body = document.body.className;
